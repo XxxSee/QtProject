@@ -92,7 +92,8 @@ void Widget::on_scanBtn_clicked()
 QImage Widget::encodeImage(const QString &s, int bulk)
 {
     QImage codeImage;
-    QRcode* qren = QRcode_encodeString(s.toUtf8(), 1, QR_ECLEVEL_Q, QR_MODE_8, 0);
+    qDebug() << s.toUtf8();
+    QRcode* qren = QRcode_encodeString(s.toUtf8(), 1, QR_ECLEVEL_Q, QR_MODE_8, 1);
     if (qren) {
         int allBulk = (qren->width) * bulk;
         QRect codeRect(0, 0, allBulk, allBulk);
