@@ -38,6 +38,7 @@ some windows tool programs written in QT
 -handleorcode
 
 > use qzxing library to decode OR code
+> qzxing：https://github.com/ftylitak/qzxing.git
 >
 > use qrencode library to encode OR code
 >
