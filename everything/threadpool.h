@@ -48,7 +48,7 @@ public:
         //任务清空了，但是正在执行的任务函数没有执行结束
         for (;;) {
             int flag = 0;
-            for (int i{0}; i<m_vFunComplete.size() && m_bRun.load(); i++) {
+            for (uint i{0}; i<m_vFunComplete.size() && m_bRun.load(); i++) {
                 flag |= m_vFunComplete[i];
             }
             if (0 == flag) {
@@ -57,14 +57,14 @@ public:
             this_thread::sleep_for(chrono::milliseconds(100));
         }
 
-        for (int i{0}; i<m_vFunComplete.size(); i++) {
+        for (uint i{0}; i<m_vFunComplete.size(); i++) {
             m_vFunComplete[i] = 0;
         }
     }
     void stop() {
         m_bRun.store(false);
         m_cv.notify_all();
-        for (int i{0}; i<m_vThreads.size(); i++) {
+        for (uint i{0}; i<m_vThreads.size(); i++) {
             m_vThreads[i]->join();
         }
         m_dTasks.clear();

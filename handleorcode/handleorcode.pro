@@ -1,5 +1,5 @@
 include(../include/common.pri)
-include(qzxing/src/QZXing.pri)
+include(qzxing/QZXing.pri)
 include(qrencode/qrencode.pri)
 
 SOURCES += \
