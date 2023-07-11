@@ -23,6 +23,7 @@ void WallpaperWidget::setDesktop(QWidget *parentW)
     //Œ™nullptr…Ë÷√µΩDesktop
     if (!parentW) {
         if (desktopWnd) {
+            SendMessageToDesktop();
             setParent(nullptr);
             showFullScreen();
             SetParent((HWND)winId(), desktopWnd);
