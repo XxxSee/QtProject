@@ -35,10 +35,11 @@
 bin
 debug
 release
+build*
 
 # Qt Compiled Other
 *.qmake.stash
 Makefile
 Makefile.*
-*.pro.user
+*.user
 ui_*
