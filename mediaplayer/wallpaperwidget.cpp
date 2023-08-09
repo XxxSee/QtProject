@@ -19,11 +19,15 @@ WallpaperWidget::~WallpaperWidget()
 void WallpaperWidget::setDesktop(QWidget *parentW)
 {
 #ifdef Q_OS_WIN
+    static bool bSplit = false;
+    if (!bSplit) {
+        SendMessageToDesktop();
+        bSplit = true;
+    }
     static HWND desktopWnd = findDesktopIconWnd();
     //Œ™nullptr…Ë÷√µΩDesktop
     if (!parentW) {
         if (desktopWnd) {
-            SendMessageToDesktop();
             setParent(nullptr);
             showFullScreen();
             SetParent((HWND)winId(), desktopWnd);

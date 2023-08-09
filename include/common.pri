@@ -8,11 +8,26 @@ INCLUDEPATH += $$PWD/../include/
 
 TEMPLATE = lib
 
-CONFIG(debug, debug|release) {
-    DESTDIR = ..\bin\debug\thirdplugin
+greaterThan(QT_MAJOR_VERSION,4){
+        TARGET_ARCH=$${QT_ARCH}
+}else{
+        TARGET_ARCH=$${QMAKE_HOST.arch}
 }
-else {
-    DESTDIR = ..\bin\release\thirdplugin
+
+contains(TARGET_ARCH, x86_64){
+    CONFIG(debug, debug|release) {
+        DESTDIR = ..\bin\x64\debug\thirdplugin
+    }
+    else {
+        DESTDIR = ..\bin\x64\release\thirdplugin
+    }
+}else{
+    CONFIG(debug, debug|release) {
+        DESTDIR = ..\bin\x86\debug\thirdplugin
+    }
+    else {
+        DESTDIR = ..\bin\x86\release\thirdplugin
+    }
 }
 
 # 指定自定义目标在生成目标文件之后执行

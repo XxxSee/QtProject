@@ -29,10 +29,24 @@ DEFINES += PROJECT_LOAD_DLL
 
 INCLUDEPATH += D:/XxxSee/Source/QT\Dll/QtProject/include
 
-CONFIG(debug, debug|release) {
-    DESTDIR = ..\bin\debug
+greaterThan(QT_MAJOR_VERSION,4){
+        TARGET_ARCH=$${QT_ARCH}
+}else{
+        TARGET_ARCH=$${QMAKE_HOST.arch}
 }
-else {
-    DESTDIR = ..\bin\release
+
+contains(TARGET_ARCH, x86_64){
+    CONFIG(debug, debug|release) {
+        DESTDIR = ..\bin\x64\debug
+    }
+    else {
+        DESTDIR = ..\bin\x64\release
+    }
+}else{
+    CONFIG(debug, debug|release) {
+        DESTDIR = ..\bin\x86\debug
+    }
+    else {
+        DESTDIR = ..\bin\x86\release
+    }
 }
-#LIBS += -LD:/XxxSee/Source/QT/Dll/QtProject/mainprogram/lib/ -lscreenshot

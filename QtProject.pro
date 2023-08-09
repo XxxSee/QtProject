@@ -7,6 +7,7 @@ SUBDIRS += \
     drawtool \
     everything \
     handleorcode \
+    imageedit \
     mediaplayer \
     screenrecord \
     screenshot \
