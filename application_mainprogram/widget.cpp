@@ -79,7 +79,6 @@ void Widget::loadPlugin()
     for (auto file : files) {
         QLibrary *pLib = new QLibrary(file.absoluteFilePath(), this);
         if (pLib->load()){
-            QApplication::processEvents();
             using FunType = BaseWidget* (*)();
             FunType createWgt = (FunType)pLib->resolve("createWidget");
             if (createWgt) {
@@ -100,6 +99,7 @@ void Widget::loadPlugin()
             pLib = nullptr;
         }
         bLoad = false;
+        QApplication::processEvents();
     }
     vlay->addStretch(1);
 }

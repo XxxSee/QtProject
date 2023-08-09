@@ -36,6 +36,7 @@ bin
 debug
 release
 build*
+3part
 
 # Qt Compiled Other
 *.qmake.stash

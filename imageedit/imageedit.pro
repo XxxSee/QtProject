@@ -53,4 +53,4 @@ INCLUDEPATH += $${PWD}/3part/opencv/build \
 
 QT += concurrent
 
-TEMPLATE = app
+#TEMPLATE = app
