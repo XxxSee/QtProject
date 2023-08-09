@@ -35,6 +35,11 @@ some windows tool programs written in QT
 
 ![](https://github.com/XxxSee/QtProject/blob/main/image/everything.gif?raw=true)
 
+-imageedit
+> use opencv library to implement simple image editing and turn the task process into a flowchart
+> use others's source code:https://zhuanlan.zhihu.com/p/461643864
+![](https://github.com/XxxSee/QtProject/blob/main/image/imageedit.gif?raw=true)
+
 -handleorcode
 
 > use qzxing library to decode OR code
