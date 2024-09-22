@@ -107,7 +107,7 @@ bool DiskSqlite::insertTable()
             QList<QFileInfo> & infos = it.value();
             for (int i{0}; i<infos.size() && ThreadPool::ins()->isRunning(); i++) {
                 //如果数据超过了100万，先提交一次，这里假设是10万提交一次影响效率
-                if (chunkCnt != 0 && (chunkCnt % 999999 == 0)) {
+                if (chunkCnt != 0 && (chunkCnt % 99999 == 0)) {
                     query.addBindValue(filenames);
                     query.addBindValue(suffixs);
                     query.addBindValue(filepaths);
@@ -136,18 +136,24 @@ bool DiskSqlite::insertTable()
                 chunkCnt++;
             }
         }
-        query.addBindValue(filenames);
-        query.addBindValue(suffixs);
-        query.addBindValue(filepaths);
-        query.addBindValue(filesizes);
-        query.addBindValue(filetimes);
-        query.addBindValue(disknames);
         if (chunkCnt > 0) {
+            query.addBindValue(filenames);
+            query.addBindValue(suffixs);
+            query.addBindValue(filepaths);
+            query.addBindValue(filesizes);
+            query.addBindValue(filetimes);
+            query.addBindValue(disknames);
             if (!query.execBatch()) {
                 qDebug() << query.lastError().text();
             }
         }
         query.exec(QString("commit"));
+        filenames.clear();
+        suffixs.clear();
+        filepaths.clear();
+        filesizes.clear();
+        filetimes.clear();
+        chunkCnt = 0;
         m_bInit = true;
         return true;
     }

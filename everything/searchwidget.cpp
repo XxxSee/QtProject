@@ -13,7 +13,6 @@ SearchWidget::SearchWidget(QWidget *parent) :
     ui->setupUi(this);
     m_pModel = new DiskModel<FileInfo>(this);
     ui->tableView->setModel(m_pModel);
-    ui->tableView->setModel(m_pModel);
 
     //¹Ì¶¨QTableWidgetÁÐ¿í
     //ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Fixed);
