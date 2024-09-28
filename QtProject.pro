@@ -11,5 +11,6 @@ SUBDIRS += \
     mediaplayer \
     screenrecord \
     screenshot \
+    threedimensions
 
 
